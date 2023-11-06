@@ -1,0 +1,23 @@
+[
+    {
+        "name": "OrganizationA",
+        "parentOrganization": "",
+        "lead": "OrganizationALead",
+        "isLocal": false,
+        "modifiedBy": "Silviu"
+    },
+    {
+        "name": "OrganizationB",
+        "parentOrganization": "OrganizationA",
+        "lead": "OrganizationBLead",
+        "isLocal": true,
+        "modifiedBy": "Silviu"
+    },
+    {
+        "name": "OrganizationC",
+        "parentOrganization": "OrganizationA",
+        "lead": "OrganizationCLead",
+        "isLocal": true,
+        "modifiedBy": "Silviu"
+    }
+]

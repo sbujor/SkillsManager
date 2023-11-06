@@ -1,0 +1,17 @@
+[
+    {
+        "user": "reg.A",
+        "name": "RegisteredEmployeeA",
+        "password": "PasswordA"
+    },
+    {
+        "user": "reg.B",
+        "name": "RegisteredEmployeeB",
+        "password": "PasswordB"
+    },
+    {
+        "user": "reg.C",
+        "name": "RegisteredEmployeeC",
+        "password": "PasswordC"
+    }
+]

@@ -1,0 +1,16 @@
+{
+    "name": "skillsmanaaagercommon",
+    "version": "1.0.0",
+    "description": "A collection of utility functions and modules for use in SkillsManager projects",
+    "author": "Silviu Bujor",
+    "license": "MIT",
+    "type": "module",
+    "dependencies": {
+        "mongoose": "^8.0.0",
+        "winston": "^3.11.0",
+        "winston-daily-rotate-file": "^4.7.1"
+    },
+    "devDependencies": {
+        "prettier": "3.0.3"
+    }
+}

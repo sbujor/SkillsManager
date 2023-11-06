@@ -1,0 +1,24 @@
+import mongoDbService from "../services/mongoDbService.js";
+
+const registeredEmployeeSchema = new mongoDbService.Schema({
+    name: {
+        type: String,
+        required: true,
+    },
+    internalId: {
+        type: String,
+        required: true,
+    },
+    organization: {
+        type: mongoDbService.Schema.Types.ObjectId,
+        ref: "Organization",
+        required: false,
+    },
+});
+
+const RegisteredEmployee = mongoDbService.model(
+    "RegisteredEmployee",
+    registeredEmployeeSchema,
+);
+
+export default RegisteredEmployee;

@@ -1,0 +1,17 @@
+[
+    {
+        "name": "RegisteredEmployeeA",
+        "internalId": "1001",
+        "organization": "OrganizationB"
+    },
+    {
+        "name": "RegisteredEmployeeB",
+        "internalId": "1002",
+        "organization": "OrganizationB"
+    },
+    {
+        "name": "RegisteredEmployeeC",
+        "internalId": "1003",
+        "organization": "OrganizationC"
+    }
+]

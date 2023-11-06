@@ -1,0 +1,20 @@
+{
+    "MongoDbServer": {
+        "url": "mongodb://127.0.0.1:27017/quiz_manager",
+        "poolSize": 10
+    },
+    "webServer": {
+        "httpPort": 5000,
+        "serverTimeout": 60000,
+        "corsAllowed": [],
+        "limit": "2048mb",
+        "storageServicePort": 6001
+    },
+    "endpoints": {
+        "authContext": "/auth",
+        "userContext": "/get"
+    },
+    "jwt": {
+        "secret": "S#$%et1"
+    }
+}
