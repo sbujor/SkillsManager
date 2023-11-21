@@ -1,6 +1,6 @@
 {
     "MongoDbServer": {
-        "url": "mongodb://127.0.0.1:27017/quiz_manager",
+        "url": "mongodb://localhost:27017/quiz_manager",
         "poolSize": 10
     },
     "storageMicroservice": {

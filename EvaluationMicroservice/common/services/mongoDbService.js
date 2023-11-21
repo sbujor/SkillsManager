@@ -1,10 +1,8 @@
 "use strict";
 
 import mongoose from "mongoose";
-import os from "os";
-import dns from "dns";
-import log from "../common/services/logService.js";
-import config from "../common/services/configService.js";
+import log from "./logService.js";
+import config from "./configService.js";
 
 class MongoDbService {
     static instance = null;
@@ -30,24 +28,7 @@ class MongoDbService {
     }
 
     async #connect() {
-        let address = "localhost";
-        const interfaces = os.networkInterfaces();
-
-        // Iterate over network interfaces
-        /* for (const interfaceName in interfaces) {
-            const iface = interfaces[interfaceName];
-
-            // Filter out internal and loopback addresses
-            address = iface.find(
-                (details) => !details.internal && details.family === "IPv4",
-            );
-            if (address)
-                log.debug(`Address is ${JSON.stringify(address, null, 2)}`);
-        }*/
-        let mongoUrl = `mongodb://192.168.56.1:27017/quiz_manager`;
-        log.debug(`Mongo Url ${mongoUrl}`);
-
-        await this.#mongoose.connect(mongoUrl, {
+        await this.#mongoose.connect(config.MongoDbServer.url, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });

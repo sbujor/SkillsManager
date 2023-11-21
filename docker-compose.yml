@@ -1,0 +1,26 @@
+version: '3'
+services:
+  api-gateway:
+    build:
+      context: ./apigateway
+    ports:
+      - "5001:5001"
+   
+  evaluation-microservice:
+    build:
+      context: ./evaluationmicroservice
+    ports:
+      - "7001:7001"
+  
+  storage-microservice:
+    build:
+      context: ./storagemicroservice
+    ports:
+      - "6001:6001"
+  
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "8080:8080"
+   

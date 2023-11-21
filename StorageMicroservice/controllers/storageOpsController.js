@@ -2,7 +2,7 @@
 
 import User from "../models/user.js";
 import Evaluation from "../models/evaluation.js";
-import log from "../../Common/services/logService.js";
+import log from "../common/services/logService.js";
 
 class StorageOpsController {
     static instance = null;

@@ -4,14 +4,14 @@ import fs from "fs";
 import path from "path";
 import bcrypt from "bcrypt";
 
-import log from "../../Common/services/logService.js";
+import log from "../common/services/logService.js";
 import mongoDbService from "./mongoDbService.js";
 import Organization from "../models/organization.js";
 import RegisteredEmployee from "../models/registeredEmployee.js";
 import User from "../models/user.js";
 import Evaluation from "../models/evaluation.js";
 
-const __dirname = path.dirname(import.meta.url).replace(/^file:\/\/\//, "");
+//const __dirname = path.dirname(import.meta.url).replace(/^file:\/\/\//, "");
 
 class PrepopulationService {
     static instance = null;
@@ -29,48 +29,8 @@ class PrepopulationService {
             this.instance.constructor = null;
             await this.instance.#clean();
             await this.instance.#populate();
-            //await this.instance.#test();
         }
         return this.instance;
-    }
-
-    async #test() {
-        const evaluations = await Evaluation.aggregate([
-            {
-                $lookup: {
-                    from: "registeredemployees", // name of the RegisteredEmployee collection
-                    localField: "registeredEmployee",
-                    foreignField: "_id",
-                    as: "employee",
-                },
-            },
-            {
-                $unwind: "$employee",
-            },
-            {
-                $lookup: {
-                    from: "organizations", // name of the Organization collection
-                    localField: "employee.organization",
-                    foreignField: "_id",
-                    as: "organization",
-                },
-            },
-            {
-                $unwind: "$organization",
-            },
-            {
-                $project: {
-                    _id: 1,
-                    name: "$employee.name",
-                    manager: "$employee.managerInternalId",
-                    organization: "$organization.name",
-                    skill: "$skill",
-                    evaluation: "$evaluation",
-                },
-            },
-        ]);
-
-        log.debug(JSON.stringify(evaluations, null, 2));
     }
 
     async #clean() {
@@ -104,7 +64,7 @@ class PrepopulationService {
         try {
             await this.#populateCollection(
                 this.#organization,
-                "../prepopulation/organizations.json",
+                "./prepopulation/organizations.json",
             );
             log.debug("Prepopulations Organizations - done");
         } catch (err) {
@@ -116,10 +76,7 @@ class PrepopulationService {
         try {
             const registeredEmployeesData = JSON.parse(
                 fs.readFileSync(
-                    path.join(
-                        __dirname,
-                        "../prepopulation/registeredEmployees.json",
-                    ),
+                    "./prepopulation/registeredEmployees.json",
                     "utf8",
                 ),
             );
@@ -151,10 +108,7 @@ class PrepopulationService {
     async #populateUsers() {
         try {
             const userData = JSON.parse(
-                fs.readFileSync(
-                    path.join(__dirname, "../prepopulation/users.json"),
-                    "utf8",
-                ),
+                fs.readFileSync("./prepopulation/users.json", "utf8"),
             );
 
             // Iterate through the registeredEmployeesData and update references
@@ -181,10 +135,7 @@ class PrepopulationService {
     async #populateEvaluations() {
         try {
             const evaluationData = JSON.parse(
-                fs.readFileSync(
-                    path.join(__dirname, "../prepopulation/evaluations.json"),
-                    "utf8",
-                ),
+                fs.readFileSync("./prepopulation/evaluations.json", "utf8"),
             );
 
             // Iterate through the registeredEmployeesData and update references
@@ -209,9 +160,7 @@ class PrepopulationService {
         const count = await collection.countDocuments();
         if (count === 0) {
             log.debug(`Populating based on file ${fileName} ...`);
-            const data = JSON.parse(
-                fs.readFileSync(path.join(__dirname, fileName), "utf8"),
-            );
+            const data = JSON.parse(fs.readFileSync(fileName, "utf8"));
             await collection.create(data);
         }
     }

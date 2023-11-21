@@ -1,8 +1,8 @@
 "use strict";
 
 import axios from "axios";
-import config from "../../Common/services/configService.js";
-import log from "../../Common/services/logService.js";
+import config from "../common/services/configService.js";
+import log from "../common/services/logService.js";
 
 class EvaluationController {
     static instance = null;

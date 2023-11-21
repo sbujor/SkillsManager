@@ -3,9 +3,9 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import http from "http";
 
-import config from "../Common/services/configService.js";
-import log from "../Common/services/logService.js";
-import errorJsonReponse from "../Common/middleware/errorJsonResponse.js";
+import config from "./common/services/configService.js";
+import log from "./common/services/logService.js";
+import errorJsonReponse from "./common/middleware/errorJsonResponse.js";
 
 import evaluationRoute from "./routes/evaluationRoute.js";
 

@@ -2,8 +2,8 @@
 
 import express from "express";
 
-import config from "../../Common/services/configService.js";
-import wrapAsync from "../../Common/middleware/wrapAsync.js";
+import config from "../common/services/configService.js";
+import wrapAsync from "../common/middleware/wrapAsync.js";
 
 import evaluationController from "../controllers/evaluationController.js";
 

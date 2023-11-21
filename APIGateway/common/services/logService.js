@@ -1,6 +1,6 @@
-'use strict';
-import winston from 'winston';
-import 'winston-daily-rotate-file';
+"use strict";
+import winston from "winston";
+import "winston-daily-rotate-file";
 
 //by default, a new instance of a class is created each time it is imported, therefore we create a single instance
 const LogService = (function () {
@@ -17,16 +17,16 @@ const LogService = (function () {
 
         const fileTransport = new winston.transports.DailyRotateFile({
             levels: winston.config.syslog.levels,
-            level: 'error',
+            level: "debug",
             format: winstonFormat,
-            filename: './logs/auth-%DATE%.log',
-            datePattern: 'YYYY-MM-DD-HH',
+            filename: "./logs/auth-%DATE%.log",
+            datePattern: "YYYY-MM-DD-HH",
             zippedArchive: false,
             maxSize: 10240000,
             maxFiles: 100,
             timestamp: () => {
                 const today = new Date();
-                return '[' + process.pid + '] ' + today.toISOString();
+                return "[" + process.pid + "] " + today.toISOString();
             },
             silent: false,
         });
@@ -34,7 +34,7 @@ const LogService = (function () {
         const t = {
             console: new winston.transports.Console({
                 levels: winston.config.syslog.levels,
-                level: 'debug',
+                level: "debug",
                 format: winstonFormat,
             }),
             file: fileTransport,

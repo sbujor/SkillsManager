@@ -2,9 +2,9 @@
 
 import express from "express";
 
-import config from "../../Common/services/configService.js";
+import config from "../common/services/configService.js";
+import wrapAsync from "../common/middleware/wrapAsync.js";
 import storageOpsController from "../controllers/storageOpsController.js";
-import wrapAsync from "../../Common/middleware/wrapAsync.js";
 
 export default (app) => {
     const router = express.Router();

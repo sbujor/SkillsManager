@@ -2,11 +2,11 @@
 import express from "express";
 import http from "http";
 
-import config from "../Common/services/configService.js";
-import log from "../Common/services/logService.js";
-import errorJsonReponse from "../Common/middleware/errorJsonResponse.js";
+import config from "./common/services/configService.js";
+import log from "./common/services/logService.js";
+import errorJsonReponse from "./common/middleware/errorJsonResponse.js";
 
-//import prepopulationService from "./services/prepopulationService.js";
+import prepopulationService from "./services/prepopulationService.js";
 import storageOpsRoute from "./routes/storageOpsRoute.js";
 
 const app = express();

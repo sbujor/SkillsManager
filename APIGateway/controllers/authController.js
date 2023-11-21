@@ -2,8 +2,8 @@
 
 import axios from "axios";
 import bcrypt from "bcrypt";
-import config from "../../Common/services/configService.js";
-import log from "../../Common/services/logService.js";
+import config from "../common/services/configService.js";
+import log from "../common/services/logService.js";
 
 class AuthController {
     static instance = null;
@@ -44,6 +44,8 @@ class AuthController {
             const [username, password] = credentials.split(":");
 
             const target = `${config.storageMicroservice.url}${config.storageMicroservice.context}${config.storageMicroservice.endpoints.userContext}`;
+            log.debug(`Credential were read.... calling now ${target}`);
+
             const response = await axios.get(target, {
                 timeout: config.apiGateway.timeout,
                 headers: {
@@ -79,6 +81,7 @@ class AuthController {
     }
 
     async authenticate(req, res, next) {
+        log.debug(`Incoming authenticate request`);
         try {
             let user = await this.#getUser(req, res, next);
             if (!user)
@@ -94,6 +97,7 @@ class AuthController {
     }
 
     async getEvaluations(req, res, next) {
+        log.debug(`Incoming getEvaluations request`);
         try {
             let user = await this.#getUser(req, res, next);
             if (!user) {
@@ -126,6 +130,7 @@ class AuthController {
     }
 
     async updateEvaluation(req, res, next) {
+        log.debug(`Incoming updateEvaluation request`);
         try {
             let user = await this.#getUser(req, res, next);
             if (!user)

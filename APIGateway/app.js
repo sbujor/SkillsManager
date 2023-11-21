@@ -4,9 +4,9 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import http from "http";
 
-import config from "../Common/services/configService.js";
-import log from "../Common/services/logService.js";
-import errorJsonReponse from "../Common/middleware/errorJsonResponse.js";
+import config from "./common/services/configService.js";
+import log from "./common/services/logService.js";
+import errorJsonReponse from "./common/middleware/errorJsonResponse.js";
 
 import authRoute from "./routes/authRoute.js";
 
@@ -41,7 +41,7 @@ app.use(errorJsonReponse());
 
 //start the server
 const HTTP_PORT = process.argv[3] || config.apiGateway.httpPort;
-const server = http.createServer(app).listen(HTTP_PORT, "0.0.0.0", function () {
+const server = http.createServer(app).listen(HTTP_PORT, function () {
     log.info(`APIGateway started on http port:  ${HTTP_PORT} ....`);
 });
 server.timeout = config.apiGateway.serverTimeout;
