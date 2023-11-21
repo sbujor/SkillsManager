@@ -1,38 +1,28 @@
 "use strict";
 import express from "express";
 import cookieParser from "cookie-parser";
-import cors from "cors";
 import http from "http";
 
 import config from "../Common/services/configService.js";
 import log from "../Common/services/logService.js";
 import errorJsonReponse from "../Common/middleware/errorJsonResponse.js";
 
-import authRoute from "./routes/authRoute.js";
+import userRoute from "./routes/userRoute.js";
 
 const app = express();
 
 //json, urlEncoded, cookies
-app.use(express.json({ limit: config.apiGateway.limit }));
+app.use(express.json({ limit: config.userMicroservice.limit }));
 app.use(
     express.urlencoded({
         extended: true,
-        limit: config.apiGateway.limit,
+        limit: config.userMicroservice.limit,
     }),
 );
 app.use(cookieParser());
 //..json, urlEncoded, cookies
 
-//cors
-const corsOptions = {
-    origin: config.corsAllowed,
-    optionsSuccesStatus: 200,
-    credentials: true,
-};
-app.use(cors(corsOptions));
-//..cors
-
-authRoute(app);
+userRoute(app);
 //..register routes
 
 //middlewares
@@ -40,8 +30,8 @@ app.use(errorJsonReponse());
 //..middlewares
 
 //start the server
-const HTTP_PORT = process.argv[3] || config.apiGateway.httpPort;
+const HTTP_PORT = process.argv[3] || config.userMicroservice.httpPort;
 const server = http.createServer(app).listen(HTTP_PORT, "0.0.0.0", function () {
-    log.info(`APIGateway started on http port:  ${HTTP_PORT} ....`);
+    log.info(`UserMicroservice started on http port:  ${HTTP_PORT} ....`);
 });
-server.timeout = config.apiGateway.serverTimeout;
+server.timeout = config.userMicroservice.serverTimeout;

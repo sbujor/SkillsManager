@@ -2,21 +2,40 @@
 
 import express from "express";
 
-import config from "../services/configService.js";
+import config from "../../Common/services/configService.js";
+import wrapAsync from "../../Common/middleware/wrapAsync.js";
+
 import authController from "../controllers/authController.js";
-import wrapAsync from "../middleware/wrapAsync.js";
 
 export default (app) => {
-    app.use((req, res, next) => {
-        res.header(
-            "Acces-Control-Allow-Headers",
-            "x-acces-token, Origin, Content-Type, Accept",
-        );
-        next();
-    });
-
     const router = express.Router();
 
-    router.post("", wrapAsync(authController.auth));
-    app.use(config.endpoints.authContext, router);
+    //APIGateway <->StorageMicroservice
+    router.post(
+        config.apiGateway.endpoints.authContext,
+        wrapAsync(authController.authenticate.bind(authController)),
+    );
+    //APIGateway <-> StorageMicroservice
+    //APIGateway -> EvaluationMicroservice -> StorageMicroservice
+    //StorageMicroservice -> EvaluationMicroservice -> APIGateway
+    router.get(
+        config.apiGateway.endpoints.evaluationContext,
+        wrapAsync(authController.getEvaluations.bind(authController)),
+    );
+    //APIGateway <-> StorageMicroservice
+    //APIGateway -> EvaluationMicroservice -> StorageMicroservice
+    //StorageMicroservice -> EvaluationMicroservice -> APIGateway
+    router.put(
+        config.apiGateway.endpoints.evaluationContext,
+        wrapAsync(authController.updateEvaluation.bind(authController)),
+    );
+    //APIGateway <-> StorageMicroservice
+    //APIGateway -> UserManagementMicroservice -> StorageMicroservice
+    //StorageMicroservice -> UserManagementMicroservice -> APIGateway
+    router.post(
+        config.apiGateway.endpoints.managerContext,
+        wrapAsync(authController.addManager),
+    );
+
+    app.use(config.apiGateway.context, router);
 };

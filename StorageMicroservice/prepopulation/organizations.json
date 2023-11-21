@@ -1,0 +1,14 @@
+[
+    {
+        "name": "OrganizationA",
+        "parentOrganization": "MainOrg"
+    },
+    {
+        "name": "OrganizationAB",
+        "parentOrganization": "OrganizationA"
+    },
+    {
+        "name": "OrganizationAC",
+        "parentOrganization": "OrganizationA"
+    }
+]

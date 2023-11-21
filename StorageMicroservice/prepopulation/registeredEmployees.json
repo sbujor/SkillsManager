@@ -1,0 +1,44 @@
+[
+    {
+        "name": "John Doe",
+        "internalId": "1001",
+        "managerInternalId": "0",
+        "organization": "OrganizationA",
+        "role": "SeniorManager"
+    },
+    {
+        "name": "Jane Doe",
+        "internalId": "1002",
+        "managerInternalId": "1001",
+        "organization": "OrganizationAB",
+        "role": "Manager"
+    },
+    {
+        "name": "Mike Smith",
+        "internalId": "1003",
+        "managerInternalId": "1002",
+        "organization": "OrganizationAB",
+        "role": "Engineer"
+    },
+    {
+        "name": "George Peterson",
+        "internalId": "1004",
+        "managerInternalId": "1002",
+        "organization": "OrganizationAB",
+        "role": "Senior Engineer"
+    },
+    {
+        "name": "Linda Smith",
+        "internalId": "1102",
+        "managerInternalId": "1001",
+        "organization": "OrganizationAC",
+        "role": "Manager"
+    },
+    {
+        "name": "Helen Dhart",
+        "internalId": "1103",
+        "managerInternalId": "1102",
+        "organization": "OrganizationAC",
+        "role": "Senior Engineer"
+    }
+]

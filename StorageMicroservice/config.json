@@ -3,24 +3,18 @@
         "url": "mongodb://127.0.0.1:27017/quiz_manager",
         "poolSize": 10
     },
-    "apiGateway": {
-        "context": "/api",
-        "httpPort": 5001,
-        "serverTimeout": 60000,
-        "corsAllowed": [],
-        "limit": "2048mb",
-        "endpoints": {
-            "authContext": "/auth"
-        }
-    },
-    "storageService": {
+    "storageMicroservice": {
+        "url": "http://localhost:6001",
         "context": "/storage",
         "httpPort": 6001,
         "serverTimeout": 60000,
         "corsAllowed": [],
         "limit": "2048mb",
+        "timeout": "100000",
         "endpoints": {
-            "userContext": "/user"
+            "userContext": "/user",
+            "evaluationContext": "/evaluation",
+            "managerContext": "/manager"
         }
     }
 }

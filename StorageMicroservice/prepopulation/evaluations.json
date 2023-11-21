@@ -1,0 +1,42 @@
+[
+    {
+        "employeeInternalId": "1003",
+        "skill": "C++",
+        "evaluation": "2"
+    },
+    {
+        "employeeInternalId": "1003",
+        "skill": "Linux",
+        "evaluation": "4"
+    },
+    {
+        "employeeInternalId": "1003",
+        "skill": "Cloud Computing",
+        "evaluation": "3"
+    },
+    {
+        "employeeInternalId": "1004",
+        "skill": "C++",
+        "evaluation": "4"
+    },
+    {
+        "employeeInternalId": "1004",
+        "skill": "Linux",
+        "evaluation": "3"
+    },
+    {
+        "employeeInternalId": "1004",
+        "skill": "Cloud Computing",
+        "evaluation": "3"
+    },
+    {
+        "employeeInternalId": "1103",
+        "skill": "Cloud Computing",
+        "evaluation": "5"
+    },
+    {
+        "employeeInternalId": "1103",
+        "skill": "C++",
+        "evaluation": "5"
+    }
+]

@@ -1,0 +1,32 @@
+[
+    {
+        "user": "john.doe",
+        "name": "John Doe",
+        "password": "john.doe"
+    },
+    {
+        "user": "jane.doe",
+        "name": "Jane Doe",
+        "password": "jane.doe"
+    },
+    {
+        "user": "mike.smith",
+        "name": "Mike Smith",
+        "password": "mike.smith"
+    },
+    {
+        "user": "george.peterson",
+        "name": "George Peterson",
+        "password": "george.peterson"
+    },
+    {
+        "user": "linda.smith",
+        "name": "Linda Smith",
+        "password": "Linda.smith"
+    },
+    {
+        "user": "helen.dhart",
+        "name": "Helen Dhart",
+        "password": "helen.dhart"
+    }
+]
