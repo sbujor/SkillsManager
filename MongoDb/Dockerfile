@@ -1,14 +1,16 @@
-FROM mongo:latest
+# Use the official MongoDB image from the Docker Hub
+FROM mongo
 
-RUN apt-get update && apt-get install -y mongodb-shell
+# Set environment variables to configure MongoDB
+ENV MONGO_INITDB_ROOT_USERNAME=admin
+ENV MONGO_INITDB_ROOT_PASSWORD=adminpassword
 
-# Create the quiz_manager database
-RUN mongo -h localhost -p 27017 --quiet --execute="use quiz_manager; db.createCollection('quizzes');"
+# Install dos2unix
+RUN apt-get update && apt-get install -y dos2unix
+RUN  apt-get update && apt-get install -y net-tools
 
-# Expose port 27017
-EXPOSE 27018
+# Copy a script to the container that will be executed on initialization
+COPY init-mongo.js /docker-entrypoint-initdb.d/
+# Make sure the script is in Unix format
+RUN dos2unix /docker-entrypoint-initdb.d/init-mongo.js
 
-# Set environment variables
-ENV MONGO_INITDB_ROOT_USERNAME=silviu.bujor
-ENV MONGO_INITDB_ROOT_PASSWORD=silviu.bujor
-ENV MONGO_INITDB_DATABASE=quiz_manager

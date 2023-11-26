@@ -7,7 +7,6 @@ RUN npm install -g nodemon
 # Set the working directory to /app
 WORKDIR /app
 
-
 # Copy files to the working directory
 COPY . .
 
