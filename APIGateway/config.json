@@ -1,7 +1,7 @@
 {
     "corsAllowed": ["http://localhost:8080"],
     "apiGateway": {
-        "url": "http://localhost:5001",
+        "url": "http://api-gateway.default:5001",
         "context": "/api",
         "httpPort": 5001,
         "serverTimeout": 60000,
@@ -15,7 +15,7 @@
         }
     },
     "storageMicroservice": {
-        "url": "http://192.168.56.1:6001",
+        "url": "http://storage-microservice.default:6001",
         "context": "/storage",
         "httpPort": 6001,
         "serverTimeout": 60000,
@@ -29,7 +29,7 @@
         }
     },
     "evaluationMicroservice": {
-        "url": "http://192.168.56.1:7001",
+        "url": "http://evaluation-microservice.default:7001",
         "context": "/evaluation",
         "httpPort": 7001,
         "serverTimeout": 60000,
@@ -38,18 +38,6 @@
         "timeout": 100000,
         "endpoints": {
             "evaluationContext": "/evaluation"
-        }
-    },
-    "userMicroservice": {
-        "url": "http://localhost:8001",
-        "context": "/user",
-        "httpPort": 8001,
-        "serverTimeout": 60000,
-        "corsAllowed": [],
-        "limit": "2048mb",
-        "timeout": 10000,
-        "endpoints": {
-            "userContext": "/user"
         }
     }
 }

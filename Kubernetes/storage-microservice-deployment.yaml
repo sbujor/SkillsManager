@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: storage-microservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: storage-microservice
+  template:
+    metadata:
+      labels:
+        app: storage-microservice
+    spec:
+      containers:
+        - name: storage-microservice
+          image: silviub08/skillsmanager-storage-microservice:sm1
+          ports:
+            - containerPort: 6001

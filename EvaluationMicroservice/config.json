@@ -1,6 +1,6 @@
 {
     "evaluationMicroservice": {
-        "url": "http://192.168.56.1:7001",
+        "url": "http://evaluation-microservice.default:7001",
         "context": "/evaluation",
         "httpPort": 7001,
         "serverTimeout": 60000,
@@ -12,7 +12,7 @@
         }
     },
     "storageMicroservice": {
-        "url": "http://192.168.56.1:6001",
+        "url": "http://storage-microservice.default:6001",
         "context": "/storage",
         "httpPort": 6001,
         "serverTimeout": 60000,

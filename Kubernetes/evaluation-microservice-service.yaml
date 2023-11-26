@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: evaluation-microservice
+spec:
+  type: LoadBalancer
+  selector:
+    app: evaluation-microservice
+  ports:
+    - protocol: TCP
+      port: 7001
+      targetPort: 7001

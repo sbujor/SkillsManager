@@ -1,10 +1,10 @@
 {
     "MongoDbServer": {
-        "url": "mongodb://silviu1:silviu1@192.168.56.1:27010/quiz_manager",
+        "url": "mongodb://silviu1:silviu1@mongodb.default:27010/quiz_manager",
         "poolSize": 10
     },
     "storageMicroservice": {
-        "url": "http://localhost:6001",
+        "url": "http://storage-microservice.default:6001",
         "context": "/storage",
         "httpPort": 6001,
         "serverTimeout": 60000,

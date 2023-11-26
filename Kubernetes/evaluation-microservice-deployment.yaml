@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: evaluation-microservice
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: evaluation-microservice
+  template:
+    metadata:
+      labels:
+        app: evaluation-microservice
+    spec:
+      containers:
+        - name: evaluation-microservice
+          image: silviub08/skillsmanager-evaluation-microservice:sm1
+          ports:
+            - containerPort: 5001
